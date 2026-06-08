@@ -1,0 +1,14 @@
+[
+  {
+    "filename": "tts_20260602_095606_2e1e541d.mp3",
+    "format": "mp3",
+    "voice_key": "soft_female",
+    "voice_label": "Soft Female Voice",
+    "style_preset": "storytelling",
+    "style_label": "Calm Storytelling",
+    "speed": 1.0,
+    "effective_speed": 0.88,
+    "sample_rate": 24000,
+    "text_preview": "Welcome to Dubai, a city where the desert meets the future, where golden sands, luxury skylines, traditional souks, and world-class attractions come together in one unforgettable d"
+  }
+]

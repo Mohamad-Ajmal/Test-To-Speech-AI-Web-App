@@ -1,0 +1,236 @@
+TEXT-TO-SPEECH PROJECT INSTALLATION LIST
+
+PROJECT:
+AI Text-to-Audio Generator
+
+SYSTEM REQUIREMENTS:
+- Windows 10 or Windows 11
+- Python 3.11 recommended
+- Node.js LTS
+- FFmpeg
+- espeak-ng
+- Internet connection for first Kokoro model download
+
+IMPORTANT:
+Use Python 3.11, not Python 3.13.
+
+==================================================
+1. INSTALL SYSTEM SOFTWARE
+==================================================
+
+Install Python 3.11:
+
+winget install Python.Python.3.11
+
+Check Python:
+
+py -3.11 --version
+
+Install Node.js LTS:
+
+winget install OpenJS.NodeJS.LTS
+
+Check Node.js:
+
+node --version
+npm --version
+
+Install FFmpeg:
+
+winget install Gyan.FFmpeg
+
+Check FFmpeg:
+
+ffmpeg -version
+where.exe ffmpeg
+
+Install espeak-ng:
+
+winget install eSpeak-NG.eSpeak-NG
+
+Check espeak-ng:
+
+espeak-ng --version
+
+==================================================
+2. BACKEND PACKAGES
+==================================================
+
+Backend packages used:
+
+fastapi
+uvicorn[standard]
+python-multipart
+kokoro
+torch
+numpy
+scipy
+soundfile
+pydub
+huggingface-hub
+requests
+pydantic
+python-dotenv
+
+Backend requirements.txt:
+
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.0
+python-multipart>=0.0.9
+kokoro>=0.9.4
+torch
+numpy
+scipy
+soundfile
+pydub>=0.25.1
+huggingface-hub
+requests
+pydantic>=2.0.0
+python-dotenv>=1.0.0
+
+Backend installation:
+
+cd D:\Projects\ai_text_to_audio\backend
+py -3.11 -m venv venv
+.\venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip setuptools wheel
+python -m pip install -r requirements.txt
+
+Run backend:
+
+python -m uvicorn app:app --host 127.0.0.1 --port 8000
+
+Backend URL:
+
+http://127.0.0.1:8000
+
+Health check:
+
+http://127.0.0.1:8000/health
+
+==================================================
+3. FRONTEND PACKAGES
+==================================================
+
+Frontend packages used:
+
+react
+react-dom
+vite
+@vitejs/plugin-react
+axios
+lucide-react
+tailwindcss
+@tailwindcss/postcss
+postcss
+autoprefixer
+
+Frontend package.json dependencies:
+
+{
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "axios": "latest",
+    "vite": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "lucide-react": "latest"
+  },
+  "devDependencies": {
+    "tailwindcss": "latest",
+    "@tailwindcss/postcss": "latest",
+    "postcss": "latest",
+    "autoprefixer": "latest"
+  }
+}
+
+Frontend installation:
+
+cd D:\Projects\ai_text_to_audio\frontend
+npm install
+
+If Tailwind shows PostCSS plugin error:
+
+npm install -D @tailwindcss/postcss
+
+Run frontend:
+
+npm run dev
+
+Frontend URL:
+
+http://127.0.0.1:5173
+
+or:
+
+http://127.0.0.1:5174
+
+==================================================
+4. COMPLETE RUN ORDER
+==================================================
+
+Terminal 1 - Backend:
+
+cd D:\Projects\ai_text_to_audio\backend
+.\venv\Scripts\Activate.ps1
+python -m uvicorn app:app --host 127.0.0.1 --port 8000
+
+Terminal 2 - Frontend:
+
+cd D:\Projects\ai_text_to_audio\frontend
+npm run dev
+
+Open in browser:
+
+http://127.0.0.1:5173
+
+or the Vite URL shown in terminal.
+
+==================================================
+5. IMPORTANT NOTES
+==================================================
+
+If pip is not recognized, use:
+
+python -m pip install -r requirements.txt
+
+If Kokoro install fails, check Python version:
+
+python --version
+
+Use Python 3.11.
+
+If backend says port 8000 is already used:
+
+netstat -ano | findstr :8000
+
+Then kill the PID:
+
+taskkill /PID YOUR_PID_HERE /F
+
+If frontend shows CORS error, add frontend port to backend CORS:
+
+http://127.0.0.1:5173
+http://localhost:5173
+http://127.0.0.1:5174
+http://localhost:5174
+
+If MP3 export fails, FFmpeg is not detected. Use WAV or fix FFmpeg PATH.
+
+If FFmpeg is installed by Winget, path may look like:
+
+C:\Users\Ajmal\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.1-full_build\bin\ffmpeg.exe
+
+==================================================
+6. MOST IMPORTANT TTS PACKAGES
+==================================================
+
+kokoro
+torch
+soundfile
+numpy
+scipy
+pydub
+huggingface-hub
+
+These are the core packages for voice generation and audio export.
